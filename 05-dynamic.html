@@ -1,0 +1,33 @@
+<html>
+<head>
+    <title>DynamicElements</title>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            var head = $('<h1>');
+                head.attr('id', 'headerText')
+                head.attr('class', 'demo')
+                head.html('Hello User')
+
+            // $(head).appendTo(document.body);
+            $(document.body).append(head);
+
+            $(':text').change(function(){
+                console.log($(this).val());
+                $('#headerText').html('Hello '+$(this).val());
+                $(this).val('');
+            })
+        })
+    </script>
+    <style>
+        .demo{
+            border: 1px solid red;
+            width: 300px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" placeholder="Enter you name" />
+</body>
+</html>

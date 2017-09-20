@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>Jquery Selectors</title>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+    <style>
+        .myPwdCss{
+            border: 5px solid red;
+            background: black;
+            color: white;
+        }
+        
+    </style>
+
+    <script>
+        $(document).ready(function(){
+
+            $('#btn').css({
+                'display':'block',
+                'margin': '0px auto'
+            })
+
+            $('.head').on('click', function(){
+                console.log('change pwd css')
+            })
+            $('#head').click(function(){
+                console.log('clicked id');
+                $(this).css({
+                    'text-align':'center',
+                    'font-size':'30px'
+                });
+            })
+            // $('*').on('click', function(){
+            //     console.log($(this));
+            // })
+
+            $(":password").focusin(function(){
+                console.log('foucusin/focus event');
+                $(this).addClass('myPwdCss');
+            })
+            $(":password").focusout(function(){
+                console.log('focusout/blur event')
+                $(this).removeClass('myPwdCss');
+            })
+
+        })
+    </script>
+    
+</head>
+<body>
+    <h1 class="head">Jquery Selector Demo</h1>
+    <p id="head" class="head">Login page</p>
+
+    <form action="/api/getLogin">
+        <table>
+                <tbody>
+                    <tr>
+                        <td>UserId</td>
+                        <td><input type="text" name="userid" placeholder="Enter your email"></td>
+                    </tr>
+                    <tr>
+                            <td>Password</td>
+                            <td><input type="password" name="pwd" placeholder="Enter your password"></td>
+                        </tr>
+                    <tr>
+                            <td rowspan="2"><input type="submit" value="Login"></td>
+                        </tr>
+                    </tbody>
+                </table>
+    </form>
+
+        <input id="btn" type="button" value="SomeButton">
+</body>
+</html>
