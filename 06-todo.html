@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Todo App</title>
+        <!-- <script src="//code.jquery.com/jquery-2.2.4.min.js"></script> -->
+        <script src="jquery-1.11.0.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <script>
+            $(document).ready(function(){
+
+                // add todo code
+                // $('.createBtn').on('click', function(){
+                $(':text').on('focusout', function(){
+                    var todo = $(':text').val();
+                    if(todo.length > 0){
+                        var tbody = $('tbody');
+                        
+                        var row = $('<tr>');
+
+                        row.append($("<td>").html(todo));
+                        row.append($("<td>").html('<button class="btn btn-danger btn-sm deleteBtn">Delete</button>'));
+
+                        row.appendTo(tbody);
+
+                        $(':text').val('');
+
+                    } else {
+                        alert("Enter some todo first");
+                    }
+
+                    $('button').click(function(){
+                        console.log('Delete ');
+                        // console.log($(this).parent().parent());
+                        console.log($(this).closest('tr'));
+                        $(this).closest('tr').remove();
+                    })
+                    
+                })
+
+
+
+
+            })
+        </script>
+    </head>
+    <body>
+        <input type="text" placeholder="Enter todo" />
+        <input type="button" class="btn btn-primary btn-sm createBtn" value='Add Todo'/>
+        <hr/>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>TodoText</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Read Html</td>
+                    <td><button class="btn btn-danger btn-sm deleteBtn">Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+    </html>

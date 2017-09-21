@@ -1,0 +1,43 @@
+<html>
+        <head>
+            <title>Animation</title>
+            <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+            <style>
+                .img{
+                    border: 2px solid red;
+                    border-radius: 15px; 
+                }
+            </style>
+            <script>
+                $(document).ready(function(){
+                    $('#hideBtn').click(function(){
+                        $('img').hide(5000);
+                    })
+                    $('#showBtn').click(function(){
+                        $('img').show(2000);
+                    })
+                    $('#toggle').click(()=>{
+                        $('img').toggle(5000)
+                    })
+
+                    // fadein | fadeout | fadeToffle | slideup | slidedown
+
+                    // animation
+                    $('#animate').click(()=>{
+                        $('img').animate({width: 800}, 2500, function(){
+                            $(this).addClass('img');
+                        })
+                    })
+
+                })
+            </script>
+        </head>
+        <body>
+            <button id="hideBtn">Hide</button>
+            <button id="showBtn">Show</button>
+            <button id="toggle">Toggle</button>
+            <button id="animate">Animate</button>
+            <hr/>
+            <img src="//lorempixel.com/400/200/" alt="Some Image">
+        </body>
+        </html>

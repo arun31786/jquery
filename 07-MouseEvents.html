@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Mouse Events</title>
+        <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+        <style>
+            .para{
+                background: cyan;
+                font-family: sans-serif;
+                font-size: 20px;
+                font-weight: bold;
+                text-align: center;
+                border: 1px solid black;
+            }
+        </style>
+        <script>
+            $(document).ready(function(){
+                /* $('p').mouseenter(function(){
+                    $(this).addClass('para');
+                })
+                $('p').mouseleave(function(){
+                    $(this).removeClass('para');
+                }) */
+
+                $('p').bind('mouseenter mouseleave',function(){
+                    $(this).toggleClass('para');
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <p>Mouse Event and multiple event</p>
+        <p>Mouse Event and multiple event</p>
+        <p>Mouse Event and multiple event</p>
+
+    </body>
+    </html>
