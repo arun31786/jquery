@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <title>Validation</title>
+        <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+        <!-- <script src="//code.jquery.com/jquery-3.2.1.min.js"></script> -->
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <style>
+        </style>
+        <script>
+            $(document).ready(function(){
+                $('#submitBtn').click(function(){
+                    var userid = $(':text').val().trim();
+                    var pwd = $(':password').val().trim();
+                    if(userid.length > 0 && pwd.length > 0){
+                        console.log('send ajax request to server');
+
+                        // $.get('./10-dummyDb.json', {id: userid, password: pwd})
+                        // // $.post('./10-dummyDb.json', {id: userid, password: pwd})
+
+                        // .success(function(res){
+                        //     console.log(res)
+                        // })
+                        // .error(function(xhr, status, err){
+                        //     console.log(err)
+                        // })
+
+                        $.ajax({
+                            type: 'get',
+                            url:'./10-dummyDb.json',
+                            data: {id: userid, password: pwd},
+                            success: function(res){
+                                console.log(res)
+                                if(res.success){
+                                    $('form').hide(2000);
+                                    $('.row').html(`<h1>Welcome ${userid}</h1>`);
+                                } else {
+                                    $('form').after(`<span>Some error occurred</span>`)
+                                }
+                            },
+                            error: function(xhr, status, err){
+                                console.log(err)
+                            }
+                        })
+                    } else {
+                        alert('Invalid')
+                    }
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <form>
+                    <div class="form-group">
+                      <label for="email">Email address</label>
+                      <input type="text" class="form-control" id="email" placeholder="Email">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="pwd">Password</label>
+                      <input type="password" class="form-control" id="pwd" placeholder="Password">
+                    </div>
+
+                    <button id="submitBtn" type="button" class="btn btn-default">Submit</button>
+                  </form>
+            </div>
+        </div>
+    </body>
+    </html>

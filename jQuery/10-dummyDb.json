@@ -1,0 +1,5 @@
+{
+    "success":false,
+    "message": "Valid user",
+    "items": ["mobile", "laptop"]
+}
